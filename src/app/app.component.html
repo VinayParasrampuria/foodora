@@ -1,0 +1,41 @@
+<div class="hero">
+	<div class="hero-wrap">
+		<div class="logo" style="text-align:center">
+			<h1>
+			<img src="assets/images/logo.svg">{{ title }}
+			</h1>
+		</div>
+		<app-addfood></app-addfood>
+		<div appScrollSmooth [foodListingElement]="foodListingElement" id="scroll-down"><img src="./assets/images/scroll-down.png"></div>
+	</div>
+</div>
+<div #mainFoodListing id="mainfoodlisting" class="listing-food" [ngClass]="{'stickyDetails': stickyFoodDetails == true}">
+	<div class="container">
+		<div class="food-item-container" [ngClass]="{'active': selectedFoodId != null}">
+			<app-listfood      
+				class="food-item-main"    
+				*ngFor="let food of foodslist; let foodID = index;" 
+				[ngClass]="{'active': selectedFoodId === foodID}"
+				[food]="food"
+				(click)="showDetails(foodID)">
+			</app-listfood>
+			<div class="no-foods-to-show align-center"  *ngIf="foodslist == ''">
+				<img src="./assets/images/oops.jpg">
+				<h4>No Foods found. Please add Foods.</h4>
+			</div>
+		</div>
+		<div 
+			class="details-panel" 
+			[ngClass]="{'active': selectedFoodId != null}" 
+		>
+			<app-fooddetails 
+			class="food-details-container"
+			*ngIf="selectedFoodId != null"
+			[foodId]="selectedFoodId"  
+			[foodDetails]="foodDetails"  
+			(closePanel)="closeDetails($event)"
+			>
+			</app-fooddetails>
+		</div>    
+	</div>    
+</div>
