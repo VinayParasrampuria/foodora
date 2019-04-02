@@ -1,6 +1,6 @@
 # foodora
    This  project is of fooddetails with price and description and images storing and fetching details from localstorage  using Angular.<br>
-   In this project we have four components, as slisted below.<br>
+   In this project we have four components, as listed below.<br>
     1.addfood<br>
     2.listfood<br>
     3.fooddetails<br>
